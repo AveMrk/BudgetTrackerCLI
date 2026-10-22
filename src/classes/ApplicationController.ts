@@ -1,5 +1,7 @@
 
 import inquirer from "inquirer";
+import { isValidAmount } from "../utils/validateAmount";
+import { isValidDate } from "../utils/validateDate";
 
 import { Account } from "./Account";
 import { AccountManager } from "./AccountManager";
@@ -154,14 +156,13 @@ export class ApplicationController {
         type: "input",
         name: "amount",
         message: "Введите сумму:",
-        validate: (value: string) => {
-          const parsed = Number(value.replace(",", "."));
+        validate: (value: string): boolean | string => {
+          const amount = Number(value);
 
-          return (
-            (Number.isFinite(parsed) && parsed > 0) ||
-            "Введите число больше нуля"
-          );
-        },
+          return isValidAmount(amount)
+            ? true
+            : "Введите конечное число больше нуля.";
+        }
       },
     ]);
 
@@ -185,12 +186,11 @@ export class ApplicationController {
         name: "date",
         message: "Дата (YYYY-MM-DD):",
         default: today,
-        validate: (value: string) =>
-          /^\d{4}-\d{2}-\d{2}$/.test(value) &&
-          !Number.isNaN(Date.parse(`${value}T00:00:00Z`)) &&
-          new Date(`${value}T00:00:00Z`).toISOString().slice(0, 10) === value
+        validate: (value: string): boolean | string => {
+          return isValidDate(value)
             ? true
-            : "Введите корректную дату в формате YYYY-MM-DD",
+            : "Введите существующую дату в формате YYYY-MM-DD.";
+        }
       },
     ]);
 

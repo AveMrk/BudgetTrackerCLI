@@ -4,7 +4,7 @@ import { ISummary } from "../interfaces/ISummary";
 import { formatCurrency } from "formatCurrency";
 
 export class AccountManager implements IAccountManager, ISummary {
-  public accounts: Account[] = [];
+  private accounts: Account[] = [];
 
   get income(): number {
     return this.accounts.reduce((total, account) => total + account.income, 0);

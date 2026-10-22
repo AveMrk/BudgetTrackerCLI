@@ -19,7 +19,7 @@ export class Account implements IAccount, ISummary {
   @ReadOnly
   public id: string;
   @Metadata("description", "Массив транзакций счета")
-  public transactions: Transaction[] = [];
+  private transactions: Transaction[] = [];
 
   constructor(
     public name: string,
