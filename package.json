@@ -1,0 +1,32 @@
+{
+  "name": "budgettrackercli",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/AveMrk/BudgetTrackerCLI#readme",
+  "bugs": {
+    "url": "https://github.com/AveMrk/BudgetTrackerCLI/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AveMrk/BudgetTrackerCLI.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsx src/index.ts",
+    "build": "tsc --noEmit",
+    "dev": "tsc --watch"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "inquirer": "^14.2.4",
+    "moment": "^2.31.0",
+    "reflect-metadata": "^0.2.2",
+    "uuid": "^14.0.3"
+  }
+}
